@@ -5,7 +5,7 @@ import { RichText } from "prismic-reactjs"
 import { graphql, Link } from "gatsby"
 
 import Layout from "components/Layout"
-import { Box, Flex, Text, Image } from "rebass"
+import { Box, Flex, Text, Image, Heading } from "rebass"
 import { SliceZone } from "../components/SliceZone"
 
 const RenderBody = ({ home, projects, meta }) => (
@@ -56,7 +56,7 @@ const RenderBody = ({ home, projects, meta }) => (
       alignItems="center"
     >
       <Box mt={[15]} maxWidth={560}>
-        <Text
+        <Heading
           as="h1"
           fontWeight={400}
           textAlign="center"
@@ -66,20 +66,12 @@ const RenderBody = ({ home, projects, meta }) => (
           sx={{ textTransform: "uppercase" }}
         >
           {RichText.asText(home.heading)}
-        </Text>
+        </Heading>
       </Box>
       <Box maxWidth={860} mt={[9]}>
-        <Text
-          as="h2"
-          fontWeight={400}
-          textAlign="center"
-          color="pink"
-          sx={{ textTransform: "uppercase" }}
-          fontSize="2.6rem"
-          lineHeight={1.2}
-        >
+        <Heading as="h2" variant="heading2" textAlign="center">
           {RichText.asText(home.subheading)}
-        </Text>
+        </Heading>
       </Box>
       <Flex>
         {home.social_media.map((item, i) => (

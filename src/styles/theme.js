@@ -31,9 +31,19 @@ export const theme = {
     pink: "#ffa5db",
   },
   fonts: {
-    body: `'vcr_osd_monoregular', sans-serif`,
+    body: `'Roboto', sans-serif`,
     heading: `'vcr_osd_monoregular', sans-serif;`,
     monospace: "vcr_osd_monoregular, monospace",
+  },
+  text: {
+    heading1: {},
+    heading2: {
+      fontSize: "2.6rem",
+      lineHeight: 1.2,
+      color: "pink",
+      fontWeight: 400,
+      textTransform: "uppercase",
+    },
   },
   forms: {
     input: {

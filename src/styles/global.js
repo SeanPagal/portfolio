@@ -31,6 +31,11 @@ export const GlobalStyle = css`
     display: block;
   }
 
+  iframe {
+    border-width: 0;
+    border: 0;
+  }
+
   hr {
     box-sizing: content-box; /* 1 */
     height: 0; /* 1 */
