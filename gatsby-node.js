@@ -9,48 +9,31 @@ const wrapper = promise =>
         return result
     });
 
-exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions;
+// exports.createPages = async ({ graphql, actions }) => {
+//     const { createPage } = actions;
 
-    const result = await wrapper(
-        graphql(`
-        {
-            prismic {
-                allProjects {
-                    edges {
-                        node {
-                            project_title
-                            project_preview_description
-                            project_preview_thumbnail
-                            project_category
-                            project_post_date
-                            _meta {
-                                uid
-                            }
-                        }
-                    }
-                }
-                allPosts {
-                    edges {
-                        node {
-                            post_title
-                            post_hero_image
-                            post_hero_annotation
-                            post_date
-                            post_category
-                            post_body
-                            post_preview_description
-                            post_author
-                            _meta {
-                                uid
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `)
-    )
+//     const result = await wrapper(
+//         graphql(`
+//         {
+//             prismic {
+//                 allProjects {
+//                     edges {
+//                         node {
+//                             project_title
+//                             project_preview_description
+//                             project_preview_thumbnail
+//                             project_category
+//                             project_post_date
+//                             _meta {
+//                                 uid
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     `)
+//     )
 
     // const projectsList = result.data.prismic.allProjects.edges;
     // const postsList = result.data.prismic.allPosts.edges;
@@ -83,4 +66,4 @@ exports.createPages = async ({ graphql, actions }) => {
     //         },
     //     })
     // })
-}
+// }
