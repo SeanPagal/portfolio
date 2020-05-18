@@ -46,11 +46,11 @@ const Layout = ({ children }) => (
             <LayoutContainer className="div">
                 <Global styles={[globalStyles, typeStyles]} />
                 <div className="Layout">
-                    <Header />
+                    {/* <Header /> */}
                     <main className="Layout__content">
                         {children}
                     </main>
-                    <Footer />
+                    {/* <Footer /> */}
                 </div>
             </LayoutContainer>
         )}
