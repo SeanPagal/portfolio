@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import Footer from "components/Footer"
 import Header from "components/Header"
 import { ThemeProvider } from "emotion-theming"
 import { Global } from "@emotion/core"
@@ -28,9 +27,6 @@ const Layout = ({ children }) => {
                       size
                     }
                   }
-                  # site_image {
-                  #   url
-                  # }
                   site_name
                 }
               }
@@ -43,7 +39,6 @@ const Layout = ({ children }) => {
           <ThemeProvider theme={theme}>
             <Global styles={GlobalStyle} />
             <video playsInline autoPlay muted loop id="bgvid">
-              {/* <source src="polina.webm" type="video/webm" /> */}
               <source
                 src={
                   (data &&
@@ -72,6 +67,7 @@ const Layout = ({ children }) => {
                   rel="stylesheet"
                   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
                 />
+
                 <link
                   rel="apple-touch-icon"
                   sizes="180x180"
@@ -94,7 +90,6 @@ const Layout = ({ children }) => {
               <div className="Layout">
                 <Header />
                 <main className="Layout__content">{children}</main>
-                {/* <Footer /> */}
               </div>
             </Box>
           </ThemeProvider>

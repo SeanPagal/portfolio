@@ -1,20 +1,29 @@
 import { css } from "@emotion/core"
 import { theme } from "./theme"
+import "../fonts/VCR.css"
 
 export const GlobalStyle = css`
   html {
+    font-family: "VCR OSD Mono", "-apple-system", "BlinkMacSystemFont",
+      "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif",
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
     margin: 0;
     padding: 0;
     border: 0;
-    @font-face {
+    /* @font-face {
       font-family: "VCR OSD Mono";
-      src: url("fonts/VCROSDMono.woff2") format("woff2"),
-        url("fonts/VCROSDMono.woff") format("woff");
+      src: url("..fonts/VCROSDMono.woff2") format("woff2"),
+        url("..fonts/VCROSDMono.woff") format("woff");
       font-weight: 400;
       font-style: normal;
-    }
+    } */
+  }
+
+  form {
+    width: 100%;
   }
 
   video {

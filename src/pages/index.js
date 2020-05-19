@@ -60,7 +60,7 @@ const RenderBody = ({ home, meta }) => (
           fontWeight={400}
           textAlign="center"
           color="yellow"
-          fontSize="17.6vmin"
+          fontSize="16vmin"
           lineHeight={1}
           sx={{ textTransform: "uppercase" }}
         >
@@ -72,11 +72,15 @@ const RenderBody = ({ home, meta }) => (
           {RichText.asText(home.subheading)}
         </Heading>
       </Box>
-      <Flex>
+      <Flex flexDirection="row" mt={8}>
         {home.social_media.map((item, i) => (
-          <a href={item.icon_link.url} key={i}>
-            hi
-            <Image src="" alt="" />
+          <a href={item.icon_link.url} key={i} target="_blank" rel="noreferrer">
+            <Image
+              src={item.icon.url}
+              alt={item.icon.alt || ""}
+              width={[30, 50]}
+              mx={4}
+            />
           </a>
         ))}
       </Flex>

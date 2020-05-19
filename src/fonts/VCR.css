@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "VCR OSD Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("VCROSDMono.woff2") format("woff2"),
+    url("VCROSDMono.woff") format("woff");
+}

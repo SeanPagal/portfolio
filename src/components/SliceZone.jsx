@@ -5,6 +5,7 @@ import Iframe from "react-iframe"
 import Masonry from "react-masonry-css"
 import ScrollAnimation from "react-animate-on-scroll"
 import { SRLWrapper } from "simple-react-lightbox"
+import htmlSerializer from "../utils/htmlSerializer"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -35,7 +36,10 @@ export const SliceZone = ({ data }) => {
                 textAlign: slice.primary.alignment || "left",
               }}
             >
-              {RichText.render(slice.primary.text)}
+              <RichText
+                render={slice.primary.text}
+                htmlSerializer={htmlSerializer}
+              />
             </Box>
           </ScrollAnimation>
         )
@@ -83,11 +87,27 @@ export const SliceZone = ({ data }) => {
                       src={image.image.url}
                       key={i}
                       sx={{ cursor: "pointer" }}
+                      loading="lazy"
                     />
                   </ScrollAnimation>
                 ))}
               </Masonry>
             </SRLWrapper>
+            <Box
+              sx={{
+                p: {
+                  margin: 0,
+                  fontSize: "12px",
+                  color: "#545454",
+                  textAlign: "right",
+                },
+              }}
+            >
+              <RichText
+                render={slice.primary.caption}
+                htmlSerializer={htmlSerializer}
+              />
+            </Box>
           </Box>
         )
       case "video_grid":
@@ -98,7 +118,6 @@ export const SliceZone = ({ data }) => {
             width={1}
             justifyContent="center"
             flexWrap="wrap"
-            width={1}
             key={i}
             mt={[slice.primary.margin_top || "72px"]}
             mb={[slice.primary.margin_bottom || "72px"]}
@@ -188,11 +207,17 @@ export const SliceZone = ({ data }) => {
                 {RichText.asText(slice.primary.heading1)}
               </Text>
               <Text sx={{ p: { fontSize: "24px" } }} margin="0">
-                {RichText.render(slice.primary.copy)}
+                {slice.primary.copy && (
+                  <RichText
+                    render={slice.primary.copy}
+                    htmlSerializer={htmlSerializer}
+                  />
+                )}
               </Text>
               <Flex flexDirection="column">
                 {slice.fields.map((item, i) => (
                   <Image
+                    loading="lazy"
                     src={item.image.url}
                     width={item.image.dimensions.width}
                     key={i}
@@ -203,6 +228,8 @@ export const SliceZone = ({ data }) => {
             </Flex>
           </Box>
         )
+      default:
+        return null
     }
   })
 }

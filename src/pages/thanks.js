@@ -59,7 +59,7 @@ const RenderBody = ({ home, meta }) => (
             fontWeight={400}
             textAlign="center"
             color="yellow"
-            fontSize="17.6vmin"
+            fontSize="16vmin"
             lineHeight={1}
             sx={{ textTransform: "uppercase" }}
           >
