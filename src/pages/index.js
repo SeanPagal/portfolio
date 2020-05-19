@@ -5,12 +5,11 @@ import { RichText } from "prismic-reactjs"
 import { graphql, Link } from "gatsby"
 
 import Layout from "components/Layout"
-import { Box, Flex, Text, Image, Heading } from "rebass"
+import { Box, Flex, Image, Heading } from "rebass"
 import { SliceZone } from "../components/SliceZone"
 
-const RenderBody = ({ home, projects, meta }) => (
+const RenderBody = ({ home, meta }) => (
   <>
-    {console.log(home.body)}
     <Helmet
       title={meta.title}
       titleTemplate={`%s | ${meta.title}`}
@@ -62,13 +61,13 @@ const RenderBody = ({ home, projects, meta }) => (
           textAlign="center"
           color="yellow"
           fontSize="17.6vmin"
-          lineHeight={0.8}
+          lineHeight={1}
           sx={{ textTransform: "uppercase" }}
         >
           {RichText.asText(home.heading)}
         </Heading>
       </Box>
-      <Box maxWidth={860} mt={[9]}>
+      <Box maxWidth={600} mt={[9]}>
         <Heading as="h2" variant="heading2" textAlign="center">
           {RichText.asText(home.subheading)}
         </Heading>
@@ -127,6 +126,8 @@ export const query = graphql`
                 type
                 primary {
                   text
+                  margin_top
+                  margin_bottom
                 }
               }
               ... on PRISMIC_Home_pageBodyCategories {

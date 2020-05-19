@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import styled from "@emotion/styled"
-import dimensions from "styles/dimensions"
 import Footer from "components/Footer"
 import Header from "components/Header"
 import { ThemeProvider } from "emotion-theming"
@@ -11,13 +9,10 @@ import { GlobalStyle } from "../styles/global"
 import { theme } from "../styles/theme"
 import Helmet from "react-helmet"
 import { Box } from "rebass"
-import Iframe from "react-iframe"
 import YouTube from "react-youtube"
-import { useWindowSize } from "../utils/useWindowSize"
 
 const Layout = ({ children }) => {
   const [videoOpacity, setVideoOpacity] = useState(0)
-  const size = useWindowSize()
 
   const videoOptions = {
     playerVars: {

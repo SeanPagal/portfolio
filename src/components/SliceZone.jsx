@@ -21,7 +21,8 @@ export const SliceZone = ({ data }) =>
             width={1}
             maxWidth={640}
             key={i}
-            my={[17, null, 20]}
+            mt={[slice.primary.margin_top || "72px"]}
+            mb={[slice.primary.margin_bottom || "72px"]}
             sx={{
               textAlign: "center",
             }}

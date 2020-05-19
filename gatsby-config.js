@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Prist | Gatsby & Prismic Starter`,
+    title: `Sean Pagal`,
     description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
-    author: `Marguerite Roth | marguerite.io`,
+    author: `Sean Pagal | seanpagal.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
