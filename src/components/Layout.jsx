@@ -27,6 +27,9 @@ const Layout = ({ children }) => {
                       size
                     }
                   }
+                  # site_image {
+                  #   url
+                  # }
                   site_name
                 }
               }
