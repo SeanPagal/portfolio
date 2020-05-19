@@ -126,6 +126,7 @@ export const query = graphql`
                 type
                 primary {
                   text
+                  alignment
                   margin_top
                   margin_bottom
                 }

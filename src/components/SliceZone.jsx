@@ -31,7 +31,7 @@ export const SliceZone = ({ data }) =>
               mt={[slice.primary.margin_top || "72px"]}
               mb={[slice.primary.margin_bottom || "72px"]}
               sx={{
-                textAlign: "center",
+                textAlign: slice.primary.alignment || "left",
               }}
             >
               {RichText.render(slice.primary.text)}
@@ -54,7 +54,7 @@ export const SliceZone = ({ data }) =>
                 paddingLeft: "30px" /* gutter size */,
                 backgroundClip: "padding-box",
               },
-              ".my-masonry-grid_column > .image-grid-image": {
+              ".image-grid-column > .image-grid-image": {
                 /* change div to reference your elements you put in <Masonry> */
                 background: "grey",
                 marginBottom: "30px",
@@ -67,11 +67,19 @@ export const SliceZone = ({ data }) =>
               columnClassName="image-grid-column"
             >
               {slice.fields.map((image, i) => (
-                <Image
-                  className="image-grid-image"
-                  src={image.image.url}
+                <ScrollAnimation
+                  animateIn="fadeInUp"
+                  delay={100}
+                  duration={0.6}
+                  animateOnce
                   key={i}
-                />
+                >
+                  <Image
+                    className="image-grid-image"
+                    src={image.image.url}
+                    key={i}
+                  />
+                </ScrollAnimation>
               ))}
             </Masonry>
           </Box>
@@ -93,7 +101,7 @@ export const SliceZone = ({ data }) =>
                 width={[1, null, "45%"]}
                 height={0}
                 m={3}
-                pt={["56.25%", null, null, "36%"]}
+                pt={["56.25%", null, null, "30%"]}
                 sx={{
                   position: "relative",
                   overflow: "hidden",
@@ -122,7 +130,12 @@ export const SliceZone = ({ data }) =>
               flexWrap="wrap"
             >
               {slice.fields.map((item, i) => (
-                <Box key={i} maxWidth={315} p={3} sx={{ textAlign: "center" }}>
+                <Box
+                  key={i}
+                  maxWidth={315}
+                  p={3}
+                  sx={{ textAlign: "center", iframe: { minHeight: 260 } }}
+                >
                   <Heading color="pink" mb={[9]} variant="heading2" as="h2">
                     {RichText.asText(item.title)}
                   </Heading>

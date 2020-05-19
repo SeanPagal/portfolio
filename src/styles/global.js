@@ -25,6 +25,7 @@ export const GlobalStyle = css`
     top: 0;
     left: 0;
     z-index: -99;
+    opacity: 0.6;
   }
 
   body {

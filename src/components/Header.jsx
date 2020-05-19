@@ -74,9 +74,9 @@ const Header = () => (
       <Link activeClassName="Link--is-active" to="/contact">
         Contact
       </Link>
-      <Link activeClassName="Link--is-active" to="/clients">
+      {/* <Link activeClassName="Link--is-active" to="/clients">
         Clients
-      </Link>
+      </Link> */}
     </HeaderLinks>
   </Flex>
 )
