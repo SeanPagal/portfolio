@@ -9,9 +9,9 @@ export const GlobalStyle = css`
     padding: 0;
     border: 0;
     @font-face {
-      font-family: "vcr_osd_monoregular";
-      src: url("vcr_osd_mono_1.001-webfont.woff2") format("woff2"),
-        url("vcr_osd_mono_1.001-webfont.woff") format("woff");
+      font-family: "VCR OSD Mono";
+      src: url("fonts/VCROSDMono.woff2") format("woff2"),
+        url("fonts/VCROSDMono.woff") format("woff");
       font-weight: 400;
       font-style: normal;
     }
@@ -25,6 +25,8 @@ export const GlobalStyle = css`
     font-size: 16px;
     background-color: #000;
     color: #ffffff;
+
+    position: relative;
   }
 
   main {
@@ -198,5 +200,23 @@ export const GlobalStyle = css`
 
   [hidden] {
     display: none;
+  }
+
+  p {
+    font-size: 22px;
+    color: white;
+    line-height: 1.3;
+  }
+
+  a {
+    color: #eaff2d;
+  }
+
+  @media screen and (min-width: 512px) {
+    p {
+      font-size: 30px;
+      color: white;
+      line-height: 1.3;
+    }
   }
 `
