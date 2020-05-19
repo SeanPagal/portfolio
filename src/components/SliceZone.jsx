@@ -3,6 +3,7 @@ import { RichText } from "prismic-reactjs"
 import { Box, Flex, Text, Image, Heading } from "rebass"
 import Iframe from "react-iframe"
 import Masonry from "react-masonry-css"
+import ScrollAnimation from "react-animate-on-scroll"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -16,19 +17,26 @@ export const SliceZone = ({ data }) =>
     switch (slice.type) {
       case "text":
         return (
-          <Box
-            className="text"
-            width={1}
-            maxWidth={640}
+          <ScrollAnimation
+            animateIn="fadeInUp"
+            delay={200}
+            duration={0.8}
+            animateOnce
             key={i}
-            mt={[slice.primary.margin_top || "72px"]}
-            mb={[slice.primary.margin_bottom || "72px"]}
-            sx={{
-              textAlign: "center",
-            }}
           >
-            {RichText.render(slice.primary.text)}
-          </Box>
+            <Box
+              className="text"
+              width={1}
+              maxWidth={640}
+              mt={[slice.primary.margin_top || "72px"]}
+              mb={[slice.primary.margin_bottom || "72px"]}
+              sx={{
+                textAlign: "center",
+              }}
+            >
+              {RichText.render(slice.primary.text)}
+            </Box>
+          </ScrollAnimation>
         )
       case "image_grid":
         return (
@@ -128,6 +136,25 @@ export const SliceZone = ({ data }) =>
                   )}
                 </Box>
               ))}
+            </Flex>
+          </Box>
+        )
+      case "text_with_image":
+        return (
+          <Box className="text-with-images" maxWidth={1140} width={1}>
+            <Flex flexDirection="column" justifyContent="flex-start" width={1}>
+              <Text>{RichText.render(slice.primary.heading1)}</Text>
+              <Text>{RichText.render(slice.primary.copy)}</Text>
+              <Flex flexDirection="column">
+                {slice.fields.map((item, i) => (
+                  <Image
+                    src={item.image.url}
+                    width={item.image.dimensions.width}
+                    key={i}
+                    my={8}
+                  />
+                ))}
+              </Flex>
             </Flex>
           </Box>
         )

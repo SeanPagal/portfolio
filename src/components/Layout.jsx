@@ -29,28 +29,42 @@ const Layout = ({ children }) => {
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
+          prismic {
+            allSite_settingss {
+              edges {
+                node {
+                  background_video {
+                    ... on PRISMIC__FileLink {
+                      _linkType
+                      name
+                      url
+                      size
+                    }
+                  }
+                  site_name
+                }
+              }
             }
           }
         }
       `}
       render={data => (
         <ThemeProvider theme={theme}>
+          {console.log(data)}
           <Global styles={GlobalStyle} />
-          <div className="video-background" style={{ opacity: videoOpacity }}>
-            <div className="video-foreground">
-              <YouTube
-                videoId="U-sgYMB2Pm0"
-                opts={videoOptions}
-                className="video-iframe"
-                onReady={() => {
-                  setVideoOpacity(0.51)
-                }}
-              />
-            </div>
-          </div>
+          <video playsInline autoPlay muted loop id="bgvid">
+            {/* <source src="polina.webm" type="video/webm" /> */}
+            <source
+              src={
+                (data &&
+                  data.prismic &&
+                  data.prismic.allSite_settingss.edges[0].node.background_video
+                    .url) ||
+                ""
+              }
+              type="video/mp4"
+            />
+          </video>
           <Box
             maxWidth={1536}
             width={1}
@@ -63,9 +77,14 @@ const Layout = ({ children }) => {
                 href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900"
                 rel="stylesheet"
               />
+
+              <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+              />
             </Helmet>
             <div className="Layout">
-              {/* <Header /> */}
+              <Header />
               <main className="Layout__content">{children}</main>
               {/* <Footer /> */}
             </div>

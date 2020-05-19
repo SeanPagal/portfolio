@@ -54,7 +54,7 @@ const RenderBody = ({ home, meta }) => (
       justifyContent="center"
       alignItems="center"
     >
-      <Box mt={[15]} maxWidth={560}>
+      <Box mt={["48px", null, "48px"]} maxWidth={1156}>
         <Heading
           as="h1"
           fontWeight={400}
@@ -67,7 +67,7 @@ const RenderBody = ({ home, meta }) => (
           {RichText.asText(home.heading)}
         </Heading>
       </Box>
-      <Box maxWidth={600} mt={[9]}>
+      <Box maxWidth={1156} mt={[9]}>
         <Heading as="h2" variant="heading2" textAlign="center">
           {RichText.asText(home.subheading)}
         </Heading>

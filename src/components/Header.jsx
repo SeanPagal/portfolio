@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
+import { Flex, Box } from "rebass"
 
 const HeaderContainer = styled("div")`
   padding-top: 3.75em;
@@ -9,16 +10,17 @@ const HeaderContainer = styled("div")`
 
 const HeaderContent = styled("div")`
   display: flex;
+  flex-direction: row;
+  width: 100%;
   justify-content: space-between;
 `
 
 const HeaderLinks = styled("div")`
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-gap: 7em;
   justify-content: flex-end;
   width: 100%;
-  max-width: 200px;
+  display: flex;
+  align-items: center;
+  margin: 32px auto;
 
   a {
     color: currentColor;
@@ -26,10 +28,11 @@ const HeaderLinks = styled("div")`
     border-bottom: 3px solid transparent;
     font-weight: 600;
     font-size: 0.95em;
-    height: 100%;
+
     padding-bottom: 1.25em;
     padding-top: 0.25em;
-    display: block;
+    padding-right: 46px;
+
     position: relative;
 
     &:after {
@@ -60,18 +63,22 @@ const HeaderLinks = styled("div")`
 `
 
 const Header = () => (
-  <HeaderContainer>
-    <HeaderContent>
-      <HeaderLinks>
-        <Link activeClassName="Link--is-active" to="/work">
-          Work
-        </Link>
-        <Link activeClassName="Link--is-active" to="/blog">
-          Blog
-        </Link>
-      </HeaderLinks>
-    </HeaderContent>
-  </HeaderContainer>
+  <Flex flexDirection="row" width={1} justifyContent="flex-end">
+    <HeaderLinks>
+      <Link activeClassName="Link--is-active" to="/">
+        Home
+      </Link>
+      <Link activeClassName="Link--is-active" to="/pixel-art">
+        Pixel Art
+      </Link>
+      <Link activeClassName="Link--is-active" to="/contact">
+        Contact
+      </Link>
+      <Link activeClassName="Link--is-active" to="/clients">
+        Clients
+      </Link>
+    </HeaderLinks>
+  </Flex>
 )
 
 export default Header
