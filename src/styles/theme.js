@@ -32,17 +32,22 @@ export const theme = {
   },
   fonts: {
     body: `'Roboto', sans-serif`,
-    heading: `'vcr_osd_monoregular', sans-serif;`,
-    monospace: "vcr_osd_monoregular, monospace",
+    heading: `'VCR OSD Mono', sans-serif;`,
+    monospace: "VCR OSD Mono, monospace",
   },
   text: {
     heading1: {},
     heading2: {
-      fontSize: "2.6rem",
+      fontSize: [4, null, "36px"],
       lineHeight: 1.2,
       color: "pink",
       fontWeight: 400,
       textTransform: "uppercase",
+    },
+    paragraph: {
+      fontFamily: "body",
+      color: "white",
+      fontSize: [5],
     },
   },
   forms: {

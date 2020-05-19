@@ -9,11 +9,54 @@ export const GlobalStyle = css`
     padding: 0;
     border: 0;
     @font-face {
-      font-family: "vcr_osd_monoregular";
-      src: url("vcr_osd_mono_1.001-webfont.woff2") format("woff2"),
-        url("vcr_osd_mono_1.001-webfont.woff") format("woff");
+      font-family: "VCR OSD Mono";
+      src: url("fonts/VCROSDMono.woff2") format("woff2"),
+        url("fonts/VCROSDMono.woff") format("woff");
       font-weight: 400;
       font-style: normal;
+    }
+  }
+
+  .video-background {
+    background: #000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -99;
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.75);
+    }
+  }
+  .video-foreground,
+  .video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  @media (min-aspect-ratio: 16/9) {
+    .video-foreground {
+      height: 300%;
+      top: -100%;
+    }
+  }
+  @media (max-aspect-ratio: 16/9) {
+    .video-foreground {
+      width: 300%;
+      left: -100%;
     }
   }
 
@@ -25,6 +68,8 @@ export const GlobalStyle = css`
     font-size: 16px;
     background-color: #000;
     color: #ffffff;
+
+    position: relative;
   }
 
   main {
@@ -198,5 +243,23 @@ export const GlobalStyle = css`
 
   [hidden] {
     display: none;
+  }
+
+  p {
+    font-size: 22px;
+    color: white;
+    line-height: 1.3;
+  }
+
+  a {
+    color: #eaff2d;
+  }
+
+  @media screen and (min-width: 512px) {
+    p {
+      font-size: 30px;
+      color: white;
+      line-height: 1.3;
+    }
   }
 `
