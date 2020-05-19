@@ -4,6 +4,7 @@ import { Box, Flex, Text, Image, Heading } from "rebass"
 import Iframe from "react-iframe"
 import Masonry from "react-masonry-css"
 import ScrollAnimation from "react-animate-on-scroll"
+import { SRLWrapper } from "simple-react-lightbox"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -12,8 +13,8 @@ const breakpointColumnsObj = {
   512: 1,
 }
 
-export const SliceZone = ({ data }) =>
-  data.map((slice, i) => {
+export const SliceZone = ({ data }) => {
+  return data.map((slice, i) => {
     switch (slice.type) {
       case "text":
         return (
@@ -61,27 +62,30 @@ export const SliceZone = ({ data }) =>
               },
             }}
           >
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              className="image-masonry-grid"
-              columnClassName="image-grid-column"
-            >
-              {slice.fields.map((image, i) => (
-                <ScrollAnimation
-                  animateIn="fadeInUp"
-                  delay={100}
-                  duration={0.6}
-                  animateOnce
-                  key={i}
-                >
-                  <Image
-                    className="image-grid-image"
-                    src={image.image.url}
+            <SRLWrapper>
+              <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="image-masonry-grid"
+                columnClassName="image-grid-column"
+              >
+                {slice.fields.map((image, i) => (
+                  <ScrollAnimation
+                    animateIn="fadeInUp"
+                    delay={100}
+                    duration={0.6}
+                    animateOnce
                     key={i}
-                  />
-                </ScrollAnimation>
-              ))}
-            </Masonry>
+                  >
+                    <Image
+                      className="image-grid-image"
+                      src={image.image.url}
+                      key={i}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  </ScrollAnimation>
+                ))}
+              </Masonry>
+            </SRLWrapper>
           </Box>
         )
       case "video_grid":
@@ -123,33 +127,41 @@ export const SliceZone = ({ data }) =>
       case "categories":
         return (
           <Box className="categories" key={i}>
-            <Flex
-              flexDirection="row"
-              width={1}
-              justifyContent="center"
-              flexWrap="wrap"
+            <ScrollAnimation
+              animateIn="fadeInUp"
+              delay={300}
+              duration={0.8}
+              animateOnce
+              key={i}
             >
-              {slice.fields.map((item, i) => (
-                <Box
-                  key={i}
-                  maxWidth={315}
-                  p={3}
-                  sx={{ textAlign: "center", iframe: { minHeight: 260 } }}
-                >
-                  <Heading color="pink" mb={[9]} variant="heading2" as="h2">
-                    {RichText.asText(item.title)}
-                  </Heading>
-                  {item.placeholder_image ? (
-                    <Image
-                      src={item.placeholder_image.url}
-                      alt="placeholder_image"
-                    />
-                  ) : (
-                    <Iframe url={item.embed_url.url} width="100%" />
-                  )}
-                </Box>
-              ))}
-            </Flex>
+              <Flex
+                flexDirection="row"
+                width={1}
+                justifyContent="center"
+                flexWrap="wrap"
+              >
+                {slice.fields.map((item, i) => (
+                  <Box
+                    key={i}
+                    maxWidth={315}
+                    p={3}
+                    sx={{ textAlign: "center", iframe: { minHeight: 260 } }}
+                  >
+                    <Heading color="pink" mb={[9]} variant="heading2" as="h2">
+                      {RichText.asText(item.title)}
+                    </Heading>
+                    {item.placeholder_image ? (
+                      <Image
+                        src={item.placeholder_image.url}
+                        alt="placeholder_image"
+                      />
+                    ) : (
+                      <Iframe url={item.embed_url.url} width="100%" />
+                    )}
+                  </Box>
+                ))}
+              </Flex>
+            </ScrollAnimation>
           </Box>
         )
       case "text_with_image":
@@ -173,3 +185,4 @@ export const SliceZone = ({ data }) =>
         )
     }
   })
+}

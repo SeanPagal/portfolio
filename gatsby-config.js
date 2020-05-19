@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Sean Pagal`,
-    description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
+    description: `AUDIO ENGINEER // VIDEO EDITOR // VISUAL ARTIST`,
     author: `Sean Pagal | seanpagal.com`,
+    image: "/images/favicon.ico",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -40,13 +41,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-prismic-starter-prist`,
-        short_name: `prist`,
+        name: `Sean Pagal Portfolio`,
+        short_name: `Pagal`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#000`,
+        theme_color: `#000`,
         display: `minimal-ui`,
-        icon: `src/images/oscar-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
       },
     },
     // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/

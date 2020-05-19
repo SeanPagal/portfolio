@@ -12,7 +12,7 @@ const RenderBody = ({ home, meta }) => (
   <>
     <Helmet
       title={meta.title}
-      titleTemplate={`%s | ${meta.title}`}
+      titleTemplate={`${meta.title}`}
       meta={[
         {
           name: `description`,
