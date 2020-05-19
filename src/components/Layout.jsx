@@ -9,23 +9,9 @@ import { GlobalStyle } from "../styles/global"
 import { theme } from "../styles/theme"
 import Helmet from "react-helmet"
 import { Box } from "rebass"
-import YouTube from "react-youtube"
 import SimpleReactLightbox from "simple-react-lightbox"
 
 const Layout = ({ children }) => {
-  const [videoOpacity, setVideoOpacity] = useState(0)
-
-  const videoOptions = {
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      rel: 0,
-      showinfo: 0,
-      mute: 1,
-      loop: 1,
-    },
-  }
-
   return (
     <StaticQuery
       query={graphql`
@@ -55,7 +41,6 @@ const Layout = ({ children }) => {
       render={data => (
         <SimpleReactLightbox>
           <ThemeProvider theme={theme}>
-            {console.log(data)}
             <Global styles={GlobalStyle} />
             <video playsInline autoPlay muted loop id="bgvid">
               {/* <source src="polina.webm" type="video/webm" /> */}

@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
 import { Box, Flex, Image, Heading } from "rebass"
@@ -133,6 +133,10 @@ export const query = graphql`
               }
               ... on PRISMIC_Home_pageBodyCategories {
                 type
+                primary {
+                  margin_top
+                  margin_bottom
+                }
                 fields {
                   title
                   embed_url {
@@ -145,6 +149,10 @@ export const query = graphql`
               }
               ... on PRISMIC_Home_pageBodyVideo_grid {
                 type
+                primary {
+                  margin_top
+                  margin_bottom
+                }
                 fields {
                   embed_url {
                     ... on PRISMIC__ExternalLink {
@@ -157,6 +165,8 @@ export const query = graphql`
                 type
                 primary {
                   caption
+                  margin_top
+                  margin_bottom
                 }
                 fields {
                   image

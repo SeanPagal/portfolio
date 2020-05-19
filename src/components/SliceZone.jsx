@@ -45,6 +45,8 @@ export const SliceZone = ({ data }) => {
             className="image-grid"
             width={1}
             key={i}
+            mt={[slice.primary.margin_top || "72px"]}
+            mb={[slice.primary.margin_bottom || "72px"]}
             sx={{
               ".image-masonry-grid": {
                 display: "flex",
@@ -55,7 +57,7 @@ export const SliceZone = ({ data }) => {
                 paddingLeft: "30px" /* gutter size */,
                 backgroundClip: "padding-box",
               },
-              ".image-grid-column > .image-grid-image": {
+              ".image-grid-column .image-grid-image": {
                 /* change div to reference your elements you put in <Masonry> */
                 background: "grey",
                 marginBottom: "30px",
@@ -98,6 +100,8 @@ export const SliceZone = ({ data }) => {
             flexWrap="wrap"
             width={1}
             key={i}
+            mt={[slice.primary.margin_top || "72px"]}
+            mb={[slice.primary.margin_bottom || "72px"]}
           >
             {slice.fields.map((item, i) => (
               <Box
@@ -126,7 +130,12 @@ export const SliceZone = ({ data }) => {
         )
       case "categories":
         return (
-          <Box className="categories" key={i}>
+          <Box
+            className="categories"
+            key={i}
+            mt={[slice.primary.margin_top || "72px"]}
+            mb={[slice.primary.margin_bottom || "72px"]}
+          >
             <ScrollAnimation
               animateIn="fadeInUp"
               delay={300}
@@ -166,10 +175,21 @@ export const SliceZone = ({ data }) => {
         )
       case "text_with_image":
         return (
-          <Box className="text-with-images" maxWidth={1140} width={1}>
+          <Box
+            key={i}
+            className="text-with-images"
+            maxWidth={1140}
+            width={1}
+            mt={[slice.primary.margin_top || "72px"]}
+            mb={[slice.primary.margin_bottom || "72px"]}
+          >
             <Flex flexDirection="column" justifyContent="flex-start" width={1}>
-              <Text>{RichText.render(slice.primary.heading1)}</Text>
-              <Text>{RichText.render(slice.primary.copy)}</Text>
+              <Text fontSize={["32px"]} fontWeight="bold">
+                {RichText.asText(slice.primary.heading1)}
+              </Text>
+              <Text sx={{ p: { fontSize: "24px" } }} margin="0">
+                {RichText.render(slice.primary.copy)}
+              </Text>
               <Flex flexDirection="column">
                 {slice.fields.map((item, i) => (
                   <Image
