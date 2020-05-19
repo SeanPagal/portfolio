@@ -3,11 +3,15 @@
 // As your project grows, you should update this function according to your routes
 
 exports.linkResolver = function linkResolver(doc) {
-    // Route for blog posts
-    if (doc.type === 'Post') {
-        return '/blog/' + doc.uid;
-    }
+  // Route for blog posts
+  if (doc.type === "contact_page") {
+    return "/contact"
+  }
 
-    // Homepage route fallback
-    return '/';
+  if (doc.type === "pixel_page") {
+    return "/pixel-art"
+  }
+
+  // Homepage route fallback
+  return "/"
 }

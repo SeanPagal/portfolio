@@ -50,28 +50,46 @@ export const theme = {
       fontSize: [5],
     },
   },
+  buttons: {
+    primary: {
+      cursor: "pointer",
+      color: "black",
+      textTransform: "uppercase",
+      fontWeight: "bold",
+      minWidth: 150,
+      paddingTop: "14px",
+      paddingBottom: "14px",
+      "&:hover": {
+        backgroundColor: "#AAA",
+        color: "white",
+      },
+    },
+  },
   forms: {
     input: {
       fontFamily: "heading",
       padding: "14px 32px 14px 16px",
-      boxShadow: "inset 4px 4px 0 #DDD",
-      border: "2px solid #333",
+      backgroundColor: "#fff",
+      color: "black",
+      fontSize: "20px",
+
       "&:focus": {
         outline: "3px solid #AAA",
         outlineOffset: 0,
       },
     },
-    select: {
+    textarea: {
       fontFamily: "heading",
       padding: "14px 32px 14px 16px",
-      boxShadow: "inset 4px 4px 0 #DDD",
-      border: "2px solid #333",
+      backgroundColor: "#fff",
+      color: "black",
+      fontSize: "20px",
+
       "&:focus": {
         outline: "3px solid #AAA",
         outlineOffset: 0,
       },
     },
-    textarea: {},
     label: {
       fontWeight: "bold",
       marginBottom: 2,

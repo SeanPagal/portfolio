@@ -4,11 +4,10 @@ import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
-import { Box, Flex, Heading } from "rebass"
-import { SliceZone } from "../components/SliceZone"
+import { Box, Flex, Heading, Image } from "rebass"
 
 const RenderBody = ({ home, meta }) => (
-  <>
+  <Flex>
     <Helmet
       title="Sean Pagal"
       titleTemplate={`%s | Pixel Art`}
@@ -75,14 +74,14 @@ const RenderBody = ({ home, meta }) => (
           </Heading>
         </Box>
       )}
-      <SliceZone data={home.body} />
+      {home.image && <Image mt={[15]} src={home.image.url} />}
     </Flex>
-  </>
+  </Flex>
 )
 
 export default ({ data }) => {
   //Required check for no data being returned
-  const doc = data.prismic.allPixel_pages.edges.slice(0, 1).pop()
+  const doc = data.prismic.allThank_you_pages.edges.slice(0, 1).pop()
   const meta = data.site.siteMetadata
 
   if (!doc) return null
@@ -97,26 +96,12 @@ export default ({ data }) => {
 export const query = graphql`
   {
     prismic {
-      allPixel_pages {
+      allThank_you_pages {
         edges {
           node {
             heading
             subheading
-            body {
-              __typename
-              ... on PRISMIC_Pixel_pageBodyText_with_image {
-                type
-                primary {
-                  heading1
-                  copy
-                  margin_top
-                  margin_bottom
-                }
-                fields {
-                  image
-                }
-              }
-            }
+            image
           }
         }
       }

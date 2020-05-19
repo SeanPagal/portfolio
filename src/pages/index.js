@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
 import { Box, Flex, Image, Heading } from "rebass"
@@ -12,7 +12,7 @@ const RenderBody = ({ home, meta }) => (
   <>
     <Helmet
       title={meta.title}
-      titleTemplate={`%s | ${meta.title}`}
+      titleTemplate={`${meta.title}`}
       meta={[
         {
           name: `description`,
@@ -60,7 +60,7 @@ const RenderBody = ({ home, meta }) => (
           fontWeight={400}
           textAlign="center"
           color="yellow"
-          fontSize="17.6vmin"
+          fontSize="16vmin"
           lineHeight={1}
           sx={{ textTransform: "uppercase" }}
         >
@@ -72,11 +72,15 @@ const RenderBody = ({ home, meta }) => (
           {RichText.asText(home.subheading)}
         </Heading>
       </Box>
-      <Flex>
+      <Flex flexDirection="row" mt={8}>
         {home.social_media.map((item, i) => (
-          <a href={item.icon_link.url} key={i}>
-            hi
-            <Image src="" alt="" />
+          <a href={item.icon_link.url} key={i} target="_blank" rel="noreferrer">
+            <Image
+              src={item.icon.url}
+              alt={item.icon.alt || ""}
+              width={[30, 50]}
+              mx={4}
+            />
           </a>
         ))}
       </Flex>
@@ -126,12 +130,17 @@ export const query = graphql`
                 type
                 primary {
                   text
+                  alignment
                   margin_top
                   margin_bottom
                 }
               }
               ... on PRISMIC_Home_pageBodyCategories {
                 type
+                primary {
+                  margin_top
+                  margin_bottom
+                }
                 fields {
                   title
                   embed_url {
@@ -144,6 +153,10 @@ export const query = graphql`
               }
               ... on PRISMIC_Home_pageBodyVideo_grid {
                 type
+                primary {
+                  margin_top
+                  margin_bottom
+                }
                 fields {
                   embed_url {
                     ... on PRISMIC__ExternalLink {
@@ -156,6 +169,8 @@ export const query = graphql`
                 type
                 primary {
                   caption
+                  margin_top
+                  margin_bottom
                 }
                 fields {
                   image

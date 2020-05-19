@@ -1,19 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
-import { Flex, Box } from "rebass"
-
-const HeaderContainer = styled("div")`
-  padding-top: 3.75em;
-  padding-bottom: 3em;
-`
-
-const HeaderContent = styled("div")`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-`
+import { Flex } from "rebass"
 
 const HeaderLinks = styled("div")`
   justify-content: flex-end;
@@ -74,9 +62,9 @@ const Header = () => (
       <Link activeClassName="Link--is-active" to="/contact">
         Contact
       </Link>
-      <Link activeClassName="Link--is-active" to="/clients">
+      {/* <Link activeClassName="Link--is-active" to="/clients">
         Clients
-      </Link>
+      </Link> */}
     </HeaderLinks>
   </Flex>
 )
