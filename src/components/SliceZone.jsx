@@ -30,7 +30,7 @@ export const SliceZone = ({ data }) => {
             <Box
               className="text"
               width={1}
-              maxWidth={640}
+              maxWidth={slice.primary.max_width || 640}
               mt={[slice.primary.margin_top || "72px"]}
               mb={[slice.primary.margin_bottom || "72px"]}
               sx={{

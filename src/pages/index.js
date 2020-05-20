@@ -133,6 +133,7 @@ export const query = graphql`
                   alignment
                   margin_top
                   margin_bottom
+                  max_width
                 }
               }
               ... on PRISMIC_Home_pageBodyCategories {

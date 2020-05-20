@@ -239,4 +239,9 @@ export const GlobalStyle = css`
       line-height: 1.3;
     }
   }
+
+  li + li {
+    line-height: 1.5;
+    margin-top: 16px;
+  }
 `

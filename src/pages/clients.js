@@ -111,6 +111,7 @@ export const query = graphql`
                   alignment
                   margin_top
                   margin_bottom
+                  max_width
                 }
               }
             }
