@@ -6,6 +6,7 @@ import Masonry from "react-masonry-css"
 import ScrollAnimation from "react-animate-on-scroll"
 import { SRLWrapper } from "simple-react-lightbox"
 import htmlSerializer from "../utils/htmlSerializer"
+import { removeCompressionFromPrismicUrl } from "../utils/prismic-configuration"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -84,7 +85,7 @@ export const SliceZone = ({ data }) => {
                   >
                     <Image
                       className="image-grid-image"
-                      src={image.image.url}
+                      src={removeCompressionFromPrismicUrl(image.image.url)}
                       key={i}
                       sx={{ cursor: "pointer" }}
                       loading="lazy"
@@ -218,7 +219,7 @@ export const SliceZone = ({ data }) => {
                 {slice.fields.map((item, i) => (
                   <Image
                     loading="lazy"
-                    src={item.image.url}
+                    src={removeCompressionFromPrismicUrl(item.image.url)}
                     width={item.image.dimensions.width}
                     key={i}
                     my={8}

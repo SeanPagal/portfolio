@@ -14,3 +14,7 @@
 //     // Backup for all other types
 //     return '/';
 // }
+
+export const removeCompressionFromPrismicUrl = string => {
+  return string.replace("?auto=compress,format", "")
+}
