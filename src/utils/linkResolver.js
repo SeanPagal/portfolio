@@ -12,6 +12,10 @@ exports.linkResolver = function linkResolver(doc) {
     return "/pixel-art"
   }
 
+  if (doc.type === "client_page") {
+    return "/clients"
+  }
+
   // Homepage route fallback
   return "/"
 }

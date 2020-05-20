@@ -59,6 +59,9 @@ const Header = () => (
       <Link activeClassName="Link--is-active" to="/pixel-art">
         Pixel Art
       </Link>
+      <Link activeClassName="Link--is-active" to="/clients">
+        Client Portal
+      </Link>
       <Link activeClassName="Link--is-active" to="/contact">
         Contact
       </Link>
