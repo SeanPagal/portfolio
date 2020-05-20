@@ -9,8 +9,10 @@ import { theme } from "../styles/theme"
 import Helmet from "react-helmet"
 import { Box } from "rebass"
 import SimpleReactLightbox from "simple-react-lightbox"
-
+import { useMediaQuery } from "react-responsive"
 const Layout = ({ children }) => {
+  const isMobile = useMediaQuery({ query: "(max-width: 520px)" })
+
   return (
     <StaticQuery
       query={graphql`
@@ -41,18 +43,20 @@ const Layout = ({ children }) => {
         <SimpleReactLightbox>
           <ThemeProvider theme={theme}>
             <Global styles={GlobalStyle} />
-            <video playsInline autoPlay muted loop id="bgvid">
-              <source
-                src={
-                  (data &&
-                    data.prismic &&
-                    data.prismic.allSite_settingss.edges[0].node
-                      .background_video.url) ||
-                  ""
-                }
-                type="video/mp4"
-              />
-            </video>
+            {!isMobile && (
+              <video playsInline autoPlay muted loop id="bgvid">
+                <source
+                  src={
+                    (data &&
+                      data.prismic &&
+                      data.prismic.allSite_settingss.edges[0].node
+                        .background_video.url) ||
+                    ""
+                  }
+                  type="video/mp4"
+                />
+              </video>
+            )}
             <Box
               maxWidth={1536}
               width={1}

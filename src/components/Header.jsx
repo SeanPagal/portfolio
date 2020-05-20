@@ -16,10 +16,9 @@ const HeaderLinks = styled("div")`
     border-bottom: 3px solid transparent;
     font-weight: 600;
     font-size: 0.95em;
-
+    padding-right: 24px;
     padding-bottom: 1.25em;
     padding-top: 0.25em;
-    padding-right: 46px;
 
     position: relative;
 
@@ -46,6 +45,12 @@ const HeaderLinks = styled("div")`
       &:after {
         transition: 100ms ease-in-out background;
       }
+    }
+  }
+
+  @media screen and (min-width: 512px) {
+    a {
+      padding-right: 46px;
     }
   }
 `
