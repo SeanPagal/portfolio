@@ -145,10 +145,24 @@ export const query = graphql`
                 fields {
                   title
                   embed_url {
+                    _linkType
                     ... on PRISMIC__ExternalLink {
                       url
                     }
+                    ... on PRISMIC__FileLink {
+                      url
+                    }
                   }
+                  additional_embed_url {
+                    _linkType
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                    ... on PRISMIC__FileLink {
+                      url
+                    }
+                  }
+                  copy
                   placeholder_image
                 }
               }
