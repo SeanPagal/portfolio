@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { RichText } from "prismic-reactjs"
 import { Box, Flex, Text, Image, Heading } from "rebass"
 import Iframe from "react-iframe"
@@ -7,6 +7,7 @@ import ScrollAnimation from "react-animate-on-scroll"
 import { SRLWrapper } from "simple-react-lightbox"
 import htmlSerializer from "../utils/htmlSerializer"
 import { removeCompressionFromPrismicUrl } from "../utils/prismic-configuration"
+import ReactAudioPlayer from "react-audio-player"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -149,6 +150,7 @@ export const SliceZone = ({ data }) => {
           </Flex>
         )
       case "categories":
+        console.log(slice)
         return (
           <Box
             className="categories"
@@ -170,24 +172,56 @@ export const SliceZone = ({ data }) => {
                 flexWrap="wrap"
               >
                 {slice.fields.map((item, i) => (
-                  <Box
-                    key={i}
-                    maxWidth={315}
-                    p={3}
-                    sx={{ textAlign: "center", iframe: { minHeight: 260 } }}
-                  >
-                    <Heading color="pink" mb={[9]} variant="heading2" as="h2">
-                      {RichText.asText(item.title)}
-                    </Heading>
-                    {item.placeholder_image ? (
-                      <Image
-                        src={item.placeholder_image.url}
-                        alt="placeholder_image"
-                      />
-                    ) : (
-                      <Iframe url={item.embed_url.url} width="100%" />
-                    )}
-                  </Box>
+                  <Fragment key={i}>
+                    <Flex
+                      flexDirection="column"
+                      justifyContent="flex-start"
+                      alignItems="center"
+                      maxWidth={315}
+                      p={3}
+                      sx={{ textAlign: "center", iframe: { minHeight: 260 } }}
+                    >
+                      <Heading
+                        color="pink"
+                        mb={[9]}
+                        variant="heading2"
+                        as="h2"
+                        minHeight={["30px", null, 90]}
+                      >
+                        {RichText.asText(item.title)}
+                      </Heading>
+                      {item.placeholder_image ? (
+                        <Image
+                          src={item.placeholder_image.url}
+                          alt="placeholder_image"
+                        />
+                      ) : (
+                        <>
+                          {item.embed_url._linkType === "Link.file" &&
+                          item.embed_url.url.includes("mp3") ? (
+                            <ReactAudioPlayer
+                              src={item.embed_url.url}
+                              controls
+                              style={{ marginBottom: "20px" }}
+                            />
+                          ) : (
+                            <Iframe url={item.embed_url.url} width="100%" />
+                          )}
+                          {item.additional_embed_url && (
+                            <Iframe
+                              url={item.additional_embed_url.url}
+                              width="100%"
+                            />
+                          )}
+                        </>
+                      )}
+                      {item.copy && (
+                        <Text marginTop="20px">
+                          {RichText.asText(item.copy)}
+                        </Text>
+                      )}
+                    </Flex>
+                  </Fragment>
                 ))}
               </Flex>
             </ScrollAnimation>
